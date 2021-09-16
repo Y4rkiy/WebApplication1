@@ -33,6 +33,22 @@ namespace WebApplication1
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = Configuration["Authentication:Google:ClientId"];
+                    options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                }
+                )
+                .AddFacebook(options =>
+                {
+                    options.ClientId = Configuration["Authentication:Facebook:ClientId"];
+                    options.ClientSecret = Configuration["Authentication:Facebook:ClientSecret"];
+                }
+                );
+
+
             services.AddRazorPages();
         }
 
