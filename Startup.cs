@@ -46,6 +46,11 @@ namespace WebApplication1
                     options.ClientId = Configuration["Authentication:Facebook:ClientId"];
                     options.ClientSecret = Configuration["Authentication:Facebook:ClientSecret"];
                 }
+                ).AddMicrosoftAccount(options =>
+                {
+                    options.ClientId = Configuration["Authentication:Microsoft:ClientId"];
+                    options.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
+                }
                 );
 
 
